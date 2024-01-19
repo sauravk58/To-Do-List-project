@@ -1,0 +1,117 @@
+body{
+    width: 100%;
+    background:linear-gradient(447deg,#153677,#4e085f);
+    
+}
+.container{
+    /* background:linear-gradient(135deg,#153577,#4e085f); */
+    background-color: #fff;
+    border-radius: 10px;
+    margin:100px auto 0;
+    width: 40%;
+    min-height: 46vh;/*container ki height badh jayega*/
+    padding:10px;
+}
+.todo-app{
+    margin-top: 40px;
+    margin-left: 20px;
+    display:flex;
+    align-items: center;
+}
+.todo-app img{
+    margin-left: 5px;
+    width: 20px;
+}
+.todo-app h2{
+    color:rgb(3, 3, 61);
+}
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left:20px;
+    margin-bottom: 25px;
+    border-radius:30px;
+    background:#edeef0;
+}
+input{
+    outline:none ;
+    border:none;
+    background: transparent;
+    flex:1;
+    padding:10px;
+}
+button{
+    border:none;
+    outline:none;
+    padding:16px 45px;
+    background:#ff5945;
+    color:#fff;/*jo bhi likha hai uska color change ho jayega*/
+    font-size:16px;
+    cursor: pointer;
+    border-radius:40px;
+    /* margin-right: 20px; */
+}
+ul li{
+    font-size: 17px;
+    list-style: none;
+    padding: 12px 8px 12px 50px;
+    user-select: none;/* This disables the user's ability to select the text within the list items.*/
+    cursor: pointer;
+    position:relative;/*This positions the list items relative to their normal position. This allows the list items to be manipulated using properties like top, right, bottom, and left.*/
+}
+ul li::before{
+    content:' ';
+    position:absolute;
+    height:28px;
+    width:28px;
+    border-radius: 50%;
+    background-image: url(images/unchecked.png);
+    background-size: cover;
+    background-position: center;
+    top:12px;
+    left:8px; 
+}
+/*This CSS code is defining a pseudo-element for an unordered list item (li) element. It adds a small circle before the list item, which represents an unchecked checkbox.
+
+Let's break down the code:
+
+ul li::before: This is a pseudo-element that gets inserted before the content of each li element within an unordered list (ul).
+
+content: ' ': This rule gives the pseudo-element some content. In this case, it's just a space, which makes the pseudo-element visible but doesn't affect the layout.
+
+position: absolute: This rule positions the pseudo-element relative to the li element. This means the pseudo-element will be placed at a specific position within the li element.
+
+height: 28px, width: 28px: These rules set the size of the pseudo-element to 28x28 pixels.
+
+border-radius: 50%: This rule makes the corners of the pseudo-element rounded, effectively turning it into a circle.
+
+background-image: url(images/unchecked.png): This rule sets an image as the background of the pseudo-element. The image is the "unchecked" icon, which represents an unchecked checkbox.
+
+background-size: cover: This rule scales the background image to cover the entire area of the pseudo-element.
+
+background-position: center: This rule positions the background image in the center of the pseudo-element.
+
+top: 12px, left: 8px: These rules position the pseudo-element 12 pixels from the top and 8 pixels from the left of the li element.*/
+ul li.checked{
+    color:#555;
+    text-decoration: line-through;/*cancel word through line*/
+}
+ul li.checked::before{/*using pseudo element before*/
+    background-image: url(images/checked.png);
+}
+ul li span{
+    position: absolute;
+    right:0;
+    top: 5px;
+    width:40px;
+    height: 40px;
+    font-size: 22px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+    border-radius:50%;
+}
+ul li span:hover{
+    background: #edeef0;
+}

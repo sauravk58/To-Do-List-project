@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="todo-app">
+            <h2>To-Do List
+            <img src="images/icon.png" >
+            </h2>
+        </div>
+        <div class="row">
+            <input type="text" id="input-box" placeholder="add your text">
+            <button onclick="addTask()">Add</button>
+        </div>
+        <ul id="list-container">
+            <!-- <li class="checked">Task 1</li>
+            <li>Task 2</li>
+            <li>Task 3</li> -->
+        </ul>
+    </div>
+    <script >
+            const inputbox=document.getElementById("input-box");
+            const listcontainer=document.getElementById("list-container");
+
+             function addTask(){
+                if(inputbox.value===''){
+                    alert("You must write something!");
+                }
+                else{
+                    let li=document.createElement("li");//create list tag.
+                    li.innerHTML=inputbox.value;//put some value in its inner html.
+                    listcontainer.appendChild(li);//add into unordered list container.
+                    let span=document.createElement("span");
+                    span.innerHTML="\u00d7"; //adding cross icon with the help of span tag.
+                    li.appendChild(span);//here we have display span in every list element/item.
+                } 
+                inputbox.value="";
+                saveData();
+            }
+
+            listcontainer.addEventListener("click",function(e){//e will give mouse event
+                if(e.target.tagName === "LI"){//The e.targrt.tagName code is used in JavaScript to 
+                    //retrieve the tag name of an HTML element. This can be particularly useful when 
+                    //dealing with dynamic web applications, as it allows you to programmatically interact 
+                    //with elements based on their tag names.
+                    e.target.classList.toggle("checked");//on click on that list will be checked
+                    saveData();
+                }
+                else if(e.target.tagName==="SPAN"){
+                    e.target.parentElement.remove();
+                    saveData();
+                }
+            },);
+            function saveData(){
+                localStorage.setItem("data",listcontainer.innerHTML);//whatever contain in listcontainer will
+                //store in browser with the name of data and we can display using the getItem data.
+            }
+            function showTask(){
+                listcontainer.innerHTML=localStorage.getItem("data");
+            }
+            showTask();
+    </script>
+</body>
+</html>
